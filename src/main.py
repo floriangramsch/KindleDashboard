@@ -1,0 +1,44 @@
+from PIL import Image, ImageDraw, ImageFont
+from create_dashboard import create_dashboard
+import requests
+import locale
+import os
+from datetime import datetime, timedelta
+import time
+time.tzset()
+
+# optional sanity check
+locale.setlocale(locale.LC_TIME, "de_DE.UTF-8")
+os.environ["TZ"] = "Europe/Berlin"
+
+
+def sleep_until_next_hour():
+    now = datetime.now()
+    next_hour = (now + timedelta(hours=1)).replace(minute=0,
+                                                   second=0, microsecond=0)
+    seconds_until_next_hour = (next_hour - now).total_seconds()
+    time.sleep(seconds_until_next_hour)
+
+
+def should_run_now():
+    now = datetime.now()
+    start_hour = 8
+    end_hour = 22
+
+    return (start_hour <= now.hour < end_hour)
+
+
+if (__name__ == "__main__"):
+    nc_url = 'https://cloud.floxsite.de/remote.php/webdav/KindleDashboard/dashboard.png'
+    username = os.environ.get('NC_USERNAME')
+    password = os.environ.get('NC_PASSWORD')
+
+    while True:
+        if (should_run_now()):
+            create_dashboard()
+
+            with open('public/kindle_dashboard.png', 'rb') as f:
+                r = requests.put(nc_url, data=f, auth=(username, password))
+                print("Upload status:", r.status_code)
+
+        sleep_until_next_hour()
