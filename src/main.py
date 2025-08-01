@@ -35,10 +35,16 @@ if (__name__ == "__main__"):
 
     while True:
         if (should_run_now()):
+            print(
+                f"[{datetime.now().strftime('%d-%m-%Y %H:%M:%S')}] Creating dashboard...")
             create_dashboard()
 
+            print(
+                f"[{datetime.now().strftime('%d-%m-%Y %H:%M:%S')}] Uploading PNG...")
             with open('public/kindle_dashboard.png', 'rb') as f:
                 r = requests.put(nc_url, data=f, auth=(username, password))
-                print("Upload status:", r.status_code)
+                print(
+                    f"[{datetime.now().strftime('%d-%m-%Y %H:%M:%S')}] Upload status:", r.status_code)
+            print()
 
         sleep_until_next_hour()

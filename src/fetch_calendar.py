@@ -4,7 +4,8 @@ import os
 
 
 def fetch_calendar():
-    print("Fetching calender...")
+    print(
+        f"[{datetime.now().strftime('%d-%m-%Y %H:%M:%S')}] Fetching calender...")
     client = DAVClient(
         'https://cloud.floxsite.de/remote.php/dav/calendars/flo/')
     client.username = os.environ.get('NC_USERNAME')
@@ -36,7 +37,7 @@ def fetch_calendar():
 
             summary_text = summary.value if summary else "Kein Titel"
             due_str = due.value.strftime(
-                '(%d.%m.)') if due else ""
+                '(%d.%m)') if due else ""
 
             events[calendar.name]['todos'].append(
                 f"[ ] {summary_text} {due_str}")
