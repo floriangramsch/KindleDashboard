@@ -1,5 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
-from create_dashboard import create_dashboard
+# from create_dashboard import create_dashboard
+from create_dashboard import Dashboard
 import requests
 import locale
 import os
@@ -37,7 +38,9 @@ if (__name__ == "__main__"):
         if (should_run_now()):
             print(
                 f"[{datetime.now().strftime('%d-%m-%Y %H:%M:%S')}] Creating dashboard...")
-            create_dashboard()
+            # create_dashboard()
+            dashboard = Dashboard()
+            dashboard.create_dashboard()
 
             print(
                 f"[{datetime.now().strftime('%d-%m-%Y %H:%M:%S')}] Uploading PNG...")

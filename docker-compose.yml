@@ -5,3 +5,7 @@ services:
       dockerfile: Dockerfile
     platform: linux/amd64
     image: registry.floxsite.de/kindle-dashboard:latest
+    # environment:
+    #   - POLARS_SKIP_CPU_CHECK=1
+    env_file:
+      - .env

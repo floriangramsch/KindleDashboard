@@ -1,0 +1,9 @@
+# environment.yml
+name: kindle-dashboard
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - polars
+  - wetterdienst
+  - pillow
