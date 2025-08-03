@@ -18,7 +18,13 @@ def sleep_until_next_hour():
     next_hour = (now + timedelta(hours=1)).replace(minute=0,
                                                    second=0, microsecond=0)
     seconds_until_next_hour = (next_hour - now).total_seconds() - 120
-    time.sleep(seconds_until_next_hour)
+    if seconds_until_next_hour > 0:
+        print(f"Sleeping for {seconds_until_next_hour}s...")
+        time.sleep(seconds_until_next_hour)
+    else:
+        # Sleep at least a short time to avoid busy loop
+        print(f"Sleeping for {10}s...")
+        time.sleep(10)
 
 
 def should_run_now():
