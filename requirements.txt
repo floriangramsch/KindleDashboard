@@ -23,7 +23,6 @@ multidict==6.6.3
 numpy==2.3.2
 pillow==11.3.0
 platformdirs==4.3.8
-polars-lts-cpu==1.32.0
 portion==2.6.1
 propcache==0.3.2
 pyarrow==21.0.0

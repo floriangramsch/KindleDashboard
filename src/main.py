@@ -17,7 +17,7 @@ def sleep_until_next_hour():
     now = datetime.now()
     next_hour = (now + timedelta(hours=1)).replace(minute=0,
                                                    second=0, microsecond=0)
-    seconds_until_next_hour = (next_hour - now).total_seconds()
+    seconds_until_next_hour = (next_hour - now).total_seconds() - 120
     time.sleep(seconds_until_next_hour)
 
 

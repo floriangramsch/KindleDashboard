@@ -21,10 +21,9 @@ ENV LANG=de_DE.UTF-8 \
 COPY . /app
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
-# RUN pip install --no-cache-dir -r requirements.txt \
-#   && pip uninstall -y polars \
-#   && pip install --no-deps polars-lts-cpu
+RUN pip install --no-cache-dir -r requirements.txt \
+  && pip uninstall -y polars polars-lts-cpu \
+  && pip install polars-lts-cpu --no-deps
 
 # Define environment variable
 ENV PYTHONUNBUFFERED=1
