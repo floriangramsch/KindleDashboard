@@ -19,8 +19,10 @@ def fetch_calendar():
     end = datetime.combine(datetime.today() + timedelta(days=7), time.max)
 
     events = {}
+    calendar_names = list(map(lambda x: x.name, calendars))
+    flonja_index = calendar_names.index("Flonja")
 
-    for calendar in [calendars[2]]:
+    for calendar in [calendars[flonja_index]]:
         todos = calendar.todos()
         calendar_event = calendar.search(start=start, end=end)
 
@@ -65,3 +67,12 @@ def fetch_calendar():
     #     print()
 
     return events
+
+
+if __name__ == "__main__":
+    print("TEST")
+    from dotenv import load_dotenv
+
+    load_dotenv()
+    events = fetch_calendar()
+    print(events)

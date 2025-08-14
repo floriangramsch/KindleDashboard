@@ -79,7 +79,7 @@ from datetime import datetime, timedelta, timezone
 #         print("-" * 32)
 
 
-def mosmix() -> None:
+def mosmix():
     """MOSMIX-Vorhersage abrufen und schön ausgeben."""
     settings = Settings(
         ts_shape="long",
