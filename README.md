@@ -13,3 +13,8 @@ Thanks to [pascalw](https://github.com/pascalw/kindle-dash)!
 
 [Wetterdienst](https://github.com/earthobservations/wetterdienst)
 [Docs](https://wetterdienst.readthedocs.io/en/latest/data/provider/dwd/mosmix/hourly.html)
+
+## On Kindle
+
+Um aufs Kindle zu kommen, muss man es kurz einschalten und währendessen `ssh kindle` machen.
+Wenn man erfolgreich drin ist, zu `/mnt/us/dashboard` navigieren und `./stop.sh` ausführen.

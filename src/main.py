@@ -17,7 +17,7 @@ def sleep_until_next_hour():
     now = datetime.now()
     next_hour = (now + timedelta(hours=1)).replace(minute=0,
                                                    second=0, microsecond=0)
-    seconds_until_next_hour = (next_hour - now).total_seconds() - 120
+    seconds_until_next_hour = (next_hour - now).total_seconds()
     if seconds_until_next_hour > 0:
         print(f"Sleeping for {seconds_until_next_hour}s...")
         time.sleep(seconds_until_next_hour)
